@@ -33,7 +33,7 @@ class ConsoleDesingner:
         print(color + "\033[" + str(x) + ";" + str(y) + "H" + msg + "\033[0m")
     
     def goto_xy_(self, x, y, color, msg):
-        print(color + "\033[" + str(x) + ";" + str(y) + "H" + msg, end="")
+        print(color + "\033[" + str(x) + ";" + str(y) + "H" + msg + "\033[0m", end="")
 
     def clear(self):
        print("\033[2J")

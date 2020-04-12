@@ -1,4 +1,4 @@
-#!env/Scripts/python
+#!env/bin/python
 
 
 from time import sleep
@@ -37,97 +37,124 @@ def escalonador(processes: list):
         t = t + 3
 
     cd.goto_xy(8, 0, c.DARK_GRAY, '---------------------------')
-    process_01()
-
-    # for i in range(8,0,-1):
-    #     print(exec[i-1]())
-
-
-
-
-
+    
+    # process_08()
+    for _ in range(8):
+        exec[7]()
+        cd.goto_xy(2, 52, c.RED, '                           ')
+        exec = exec[-1:] + exec[:-1] 
+        t = 1
+        for i, p in enumerate(exec):
+            cd.goto_xy(7, t+2, c.YELLOW, p.__name__[-2:])
+            t = t + 3
+    
+    exec = exec[-1:] + exec[:-1]
+    t = 1
+    for i, p in enumerate(exec):
+        cd.goto_xy(7, t+2, c.YELLOW, p.__name__[-2:])
+        t = t + 3 
+    cd.goto_xy(9, 0, c.DARK_GRAY, 'Fim')
 
 
 def process_01():
     a = 1
     b = 0 
 
-    cd.goto_xy(1, 50, c.DARK_GRAY, '---------------------------')
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 01---------------')
     cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 10):
         a, b = b, a + b
-        cd.goto_xy_(2, 52, c.RED, str(a))
+        cd.goto_xy(2, 52, c.RED, str(a))
         # print(a)
-        sleep(0.500)
+        sleep(0.20)
+
     
 
 def process_02():
     a = 1
     b = 0 
 
-    for _ in range(1, 200):
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 02---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
+    for _ in range(1, 20):
         a, b = b, a + b
-        print(a)
-        sleep(0.200)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.20)
+
 
 def process_03():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 03---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 30):
         a, b = b, a + b
-        print(a)
-        sleep(0.100)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.20)
+
 
 def process_04():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 04---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 40):
         a, b = b, a + b
-        print(a)
-        sleep(0.90)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.10)
+
 
 def process_05():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 05---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 50):
         a, b = b, a + b
-        print(a)
-        sleep(0.80)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.10)
+
 
 def process_06():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 06---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 60):
         a, b = b, a + b
-        print(a)
-        sleep(0.70)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.10)
+
 
 def process_07():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 07---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 70):
         a, b = b, a + b
-        print(a)
-        sleep(0.60)
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.10)
+
 
 def process_08():
     a = 1
     b = 0 
 
+    cd.goto_xy(1, 50, c.DARK_GRAY, '--Process 08---------------')
+    cd.goto_xy(3, 50, c.DARK_GRAY, '---------------------------')
     for _ in range(1, 80):
         a, b = b, a + b
-        print(a)
-        sleep(0.50)
-
+        cd.goto_xy(2, 52, c.RED, str(a))
+        sleep(0.10)
 
 
 process = []
-
 
 process.append(process_03)
 process.append(process_02)
@@ -137,7 +164,5 @@ process.append(process_08)
 process.append(process_06)
 process.append(process_07)
 process.append(process_05)
-
-# print(process[1].__name__[-2:])
 
 escalonador(process)
